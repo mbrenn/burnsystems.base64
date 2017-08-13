@@ -67,10 +67,10 @@ namespace BurnSystems.Base64
                 var value = original[index];
                 var first = (value & 0xFC) >> 2;
                 var second = (value & 0x03) << 4;
-                _builder.Append(_alphabet[first]);
-                _builder.Append(_alphabet[second]);
-                _builder.Append(_paddingSymbol);
-                _builder.Append(_paddingSymbol);
+                _builder.Append(Alphabet[first]);
+                _builder.Append(Alphabet[second]);
+                _builder.Append(PaddingSymbol);
+                _builder.Append(PaddingSymbol);
 
             }
 
@@ -83,10 +83,10 @@ namespace BurnSystems.Base64
                 var second = (value1 & 0x03) << 4 | (value2 & 0xF0) >> 4;
                 var third = (value2 & 0x0F) << 2;
 
-                _builder.Append(_alphabet[first]);
-                _builder.Append(_alphabet[second]);
-                _builder.Append(_alphabet[third]);
-                _builder.Append(_paddingSymbol);
+                _builder.Append(Alphabet[first]);
+                _builder.Append(Alphabet[second]);
+                _builder.Append(Alphabet[third]);
+                _builder.Append(PaddingSymbol);
             }
 
             if (length == 3)
@@ -101,10 +101,10 @@ namespace BurnSystems.Base64
                 var fourth = (value3 & 0x3F);
 
 
-                _builder.Append(_alphabet[first]);
-                _builder.Append(_alphabet[second]);
-                _builder.Append(_alphabet[third]);
-                _builder.Append(_alphabet[fourth]);
+                _builder.Append(Alphabet[first]);
+                _builder.Append(Alphabet[second]);
+                _builder.Append(Alphabet[third]);
+                _builder.Append(Alphabet[fourth]);
             }
         }
     }
