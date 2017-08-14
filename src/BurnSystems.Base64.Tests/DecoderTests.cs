@@ -44,10 +44,10 @@ namespace BurnSystems.Base64.Tests
         [Fact]
         public void Test_Chapter_5_FilenameSafeAlphabet()
         {
-            Assert.True(new Base64Decoder().Decode("+A==")[0] == 62);
-            Assert.True(new Base64Decoder().Decode("/A==")[0] == 63);
-            Assert.True(new Base64Decoder(Alphabets.Base64Url).Decode("-A==")[0] == 62);
-            Assert.True(new Base64Decoder(Alphabets.Base64Url).Decode("_A==")[0] == 63);
+            Assert.True(new Base64Decoder().Decode("+A==")[0] == 248);
+            Assert.True(new Base64Decoder().Decode("/A==")[0] == 252);
+            Assert.True(new Base64Decoder(Alphabets.Base64Url).Decode("-A==")[0] == 248);
+            Assert.True(new Base64Decoder(Alphabets.Base64Url).Decode("_A==")[0] == 252);
 
 
             Assert.Throws<EncodingException>(() => new Base64Decoder(Alphabets.Base64Url).Decode("+A=="));
