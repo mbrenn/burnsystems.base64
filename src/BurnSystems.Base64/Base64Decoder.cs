@@ -70,8 +70,22 @@ namespace BurnSystems.Base64
                 if (char4 != PaddingSymbol)
                 {
                     var value4 = GetByteForCharacter(char4);
-                    var c3 = (byte)(((value3 & 0x03) << 6) | value4);
+                    var c3 = (byte) (((value3 & 0x03) << 6) | value4);
                     bytes.Add(c3);
+                }
+                else
+                {
+                    if ((value3 & 0x03) != 0x00)
+                    {
+                        throw new EncodingException("No zeroes in padding are allowed");
+                    }
+                }
+            }
+            else
+            {
+                if ((value2 & 0x0F) != 0x00)
+                {
+                    throw new EncodingException("No zeroes in padding are allowed");
                 }
             }
 

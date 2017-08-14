@@ -24,6 +24,14 @@ namespace BurnSystems.Base64.Tests
             Assert.Equal("Zm9vYmFy", new Base64Encoder().Encode("foobar"));
         }
 
+        [Fact]
+        public void Test_PaddingOfEncodedData_Chapter_3_2()
+        {
+
+            Assert.Equal("Zg==", new Base64Encoder().Encode("f"));
+            Assert.Equal("Zm8=", new Base64Encoder().Encode("fo"));
+        }
+
 
         [Fact]
         public void TestBytes()

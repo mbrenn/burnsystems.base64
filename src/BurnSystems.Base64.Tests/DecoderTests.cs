@@ -26,6 +26,13 @@ namespace BurnSystems.Base64.Tests
         }
 
         [Fact]
+        public void Test_Chapter_3_5_IgnoreNonZeroBitsinPadding()
+        {
+            Assert.Throws<EncodingException>(() => new Base64Decoder().DecodeToText("Zh=="));
+            Assert.Throws<EncodingException>(() => new Base64Decoder().DecodeToText("Zm9=="));
+        }
+
+        [Fact]
         public void Test_Chapter_10_Ignore_InvalidCharacters()
         {
             Assert.Throws<EncodingException>(() => new Base64Decoder().Decode("\0"));
@@ -40,6 +47,13 @@ namespace BurnSystems.Base64.Tests
             Assert.Throws<EncodingException>(() => new Base64Decoder().Decode("TG==="));
             Assert.Throws<EncodingException>(() => new Base64Decoder().Decode("Zm9v\r\nZm9v"));
         }
+
+        [Fact]
+        public void Test_Chapter_3_3_IgnoreNonAlphabeticCharacters()
+        {
+            Test_Chapter_10_Ignore_InvalidCharacters();
+        }
+
 
         [Fact]
         public void Test_Chapter_5_FilenameSafeAlphabet()
